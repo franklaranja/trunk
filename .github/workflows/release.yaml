@@ -272,6 +272,7 @@ jobs:
             trunk-*/trunk-*
 
   publish:
+    if: false
     needs: release
     runs-on: ubuntu-24.04
     steps:
@@ -282,6 +283,7 @@ jobs:
         run: cargo publish --token ${{ secrets.CRATES_IO_TOKEN }}
 
   pages:
+    if: false
     needs:
       - init
       - publish
@@ -289,6 +291,7 @@ jobs:
     uses: ./.github/workflows/pages.yaml
 
   brew:
+    if: false
     needs:
       - init
       - publish
