@@ -283,19 +283,17 @@ jobs:
         run: cargo publish --token ${{ secrets.CRATES_IO_TOKEN }}
 
   pages:
-    if: false
     needs:
       - init
       - publish
-    if: needs.init.outputs.prerelease != 'true'
+    if: needs.init.outputs.prerelease != 'true' && false
     uses: ./.github/workflows/pages.yaml
 
   brew:
-    if: false
     needs:
       - init
       - publish
-    if: needs.init.outputs.prerelease != 'true'
+    if: needs.init.outputs.prerelease != 'true' && false
     uses: ./.github/workflows/brew.yaml
     with:
       tag-name: v${{ needs.init.outputs.version }}
